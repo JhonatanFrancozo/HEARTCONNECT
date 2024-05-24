@@ -1,0 +1,128 @@
+@font-face {
+    font-family: 'Heart fino';
+    src: url(../assets/fontes/DK\ Cool\ Crayon.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Heart';
+    src: url(../assets/fontes/Heavy\ Trip\ -\ Demo.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    min-height: 470vh; 
+    background-image: url(../assets/img/inicio.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box; 
+}
+
+.nav {
+    width: 100vw; 
+    height: 15vh; 
+    background-image: url(../assets/img/menugreen.png); 
+    background-size: cover; 
+    background-position: center; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 0 20px;
+    position: fixed;
+    box-sizing: border-box; 
+    overflow: hidden; 
+    z-index: 1;
+    font-family:'';
+}
+
+.nav img.logo {
+    height: 80%; 
+    max-height: 100%; 
+}
+
+.nav-links a:hover {
+    color: #ffffff; 
+    text-decoration: underline; 
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    display: inline;
+    margin-right: 55px; 
+    margin-left: 55px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Heart fino';
+    font-size: 20px;
+}
+
+.logar {
+    display: flex;
+    align-items: center; 
+}
+
+.logar a:hover {
+    color: #ffffff; 
+    text-decoration: underline; 
+}
+
+.logar img {
+    height: 55px;
+    margin-right: 10px;
+}
+
+.entre {
+    opacity: 65%;
+}
+
+.texto-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.texto-div a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Heart fino';
+    margin: 2px 0;
+    
+}
+
+#banner {
+    width: 70vw;
+    height: 70vh;
+    position: absolute;
+    left: 250px; 
+    top: 600px; 
+    margin: auto;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+::-webkit-scrollbar {
+    width: 6px;
+    background: #d8fbff;
+}
+::-webkit-scrollbar-thumb {
+    background: #5D7466;
+}

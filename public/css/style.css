@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'Heart fino';
+    src: url(../fontes/DK\ Cool\ Crayon.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Heart';
+    src: url(../fontes/Heavy\ Trip\ -\ Demo.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.c1 {
+    font-family: 'Heart fino';
+}
+
+.c2 {
+    font-family: 'Heart';
+}
+
+.header {
+    background-image: url(../assets/img/menu.png);
+} 
+
+/* 
+tipos de format()
+- opentype (otf)
+- truetype (ttf)
+*/
