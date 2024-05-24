@@ -13,5 +13,17 @@ CREATE TABLE usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(70),
     email VARCHAR(70),
-    senha VARCHAR(50)
-);
+    senha VARCHAR(50),
+    fkADM INT,
+    CONSTRAINT fkUsuarioADM FOREIGN KEY (fkADM) REFERENCES usuario(id));
+
+CREATE TABLE chat (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    comentario VARCHAR(150),
+    fk_usuario INT,
+    FOREIGN KEY (fk_usuario) REFERENCES usuario(id));
+
+
+INSERT INTO chat (comentario, fk_usuario) VALUES ('Este é um comentário de exemplo', 1);
+
+SELECT * FROM usuario;
