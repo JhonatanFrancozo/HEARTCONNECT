@@ -6,10 +6,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Avisos</title>
+    <title>HeartConnect | CHAT</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
+    <link rel="stylesheet" href="../css/mural.css">
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
 
@@ -19,40 +20,26 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), atualizarFeed()" style="background-color: #161618;">
+<body onload="validarSessao(), atualizarFeed()" >
 
     <div class="janela">
 
 
-        <div class="header-left">
-
-            <h1>AquaTech</h1>
-
+        <!-- header -->
+    <nav class="nav">
+        <img src="../assets/img/logo3.png" alt="Logo do site" class="logo">
+        <ul class="nav-links">
+            <li><a href='./index.html'>Home</a></li>
+            <li><a href='./sobre.html'>Sobre</a></li>
+        </ul>
+        <div class="logar">
+            <img src="../img/logar.png" alt="">
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
-
-            <div class="btn-nav-white">
-                <a href="cards.html">
-                    <h3>Aquários</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav">
-                <h3>Mural de Avisos</h3>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
         </div>
+    </nav>
+    <!-- TERMINOheader -->
 
         <div class="dash-right">
 
@@ -61,17 +48,17 @@
                 <div id="alerta">
                 </div>
                 <div class="container">
-                    <h1>Publicar um aviso</h1>
-                    <div class="div-form">
+                    <h1>Chat</h1>
+                    <div class="div-form formulario-comentario">
                         <form id="form_postagem" method="post" onsubmit="return publicar()">
                             <label>
-                                Título:
+                                Faça seu comentário:
                                 <br>
-                                <input name="titulo" id="titulo" maxlength="100" type="text">
+                                <textarea name="titulo" id="titulo" maxlength="250" rows="5" type="text"></textarea>
                             </label>
                             <br>
                             <br>
-                            <label>
+                            <label id="invi" style="display: none;">
                                 Descrição (máximo de 250 caracteres):
                                 <br>
                                 <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
@@ -81,7 +68,9 @@
                             <button>Enviar</button>
                         </form>
                     </div>
-                    <h1>Mural de Avisos</h1>
+                    <br>
+                    <h1>Comentários</h1>
+                    <br>
                     <div class="div-results">
                         <div id="feed_container" class="feed-container">
                         </div>
@@ -97,10 +86,20 @@
 </body>
 
 </html>
-
 <script>
-    
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+$(document).ready(function() {
+        swal({
+            title: "Chat Público!",
+            text: "Para manter nossa comunidade saudável e acolhedora, pedimos que você respeite as regras de convivência. Evite comentários ofensivos, respeite as opiniões dos outros e contribua para um ambiente positivo. Comentários que violem essas diretrizes serão removidos. Agradecemos a sua compreensão e colaboração!",
+            button: {
+                text: "CONCORDO COM OS TERMOS",
+                closeModal: true
+            }
+        });
+    });
+
 
     function limparFormulario() {
         document.getElementById("form_postagem").reset();
@@ -179,9 +178,9 @@
                 if (resposta.status == 204) {
                     var feed = document.getElementById("feed_container");
                     var mensagem = document.createElement("span");
-                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    mensagem.innerHTML = "Faça um comentário! =)"
                     feed.appendChild(mensagem);
-                    throw "Nenhum resultado encontrado!!";
+                    throw "Faça um comentário! =)";
                 }
 
                 resposta.json().then(function (resposta) {
@@ -189,10 +188,9 @@
 
                     var feed = document.getElementById("feed_container");
                     feed.innerHTML = "";
-                    for (let i = 0; i < resposta.length; i++) {
-                        var publicacao = resposta[i];
+                    for (let i = resposta.length - 1; i >= 0; i--) {
+                    var publicacao = resposta[i];
 
-                        // criando e manipulando elementos do HTML via JavaScript
                         var divPublicacao = document.createElement("div");
                         var spanID = document.createElement("span");
                         var spanTitulo = document.createElement("span");
@@ -204,7 +202,7 @@
 
 
                         spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
-                        spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
+                        spanTitulo.innerHTML = "Comentário: <b>" + publicacao.titulo + "</b>";
                         spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
                         divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
                         btnEditar.innerHTML = "Editar";
@@ -226,14 +224,15 @@
                         btnDeletar.id = "btnDeletar" + publicacao.idAviso;
                         btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
 
-                        divPublicacao.appendChild(spanID);
+                        // divPublicacao.appendChild(spanID);
                         divPublicacao.appendChild(spanNome);
                         divPublicacao.appendChild(spanTitulo);
-                        divPublicacao.appendChild(divDescricao);
+                        // divPublicacao.appendChild(divDescricao);
                         divPublicacao.appendChild(divButtons);
-                        divButtons.appendChild(btnEditar);
-                        divButtons.appendChild(btnDeletar);
+                        // divButtons.appendChild(btnEditar);
+                        // divButtons.appendChild(btnDeletar);
                         feed.appendChild(divPublicacao);
+                        
                     }
 
                     finalizarAguardar();
