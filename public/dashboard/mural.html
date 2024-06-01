@@ -29,13 +29,14 @@
     <nav class="nav">
         <img src="../assets/img/logo3.png" alt="Logo do site" class="logo">
         <ul class="nav-links">
-            <li><a href='./index.html'>Home</a></li>
+            <li><a href='./quiz.html'>Quiz</a></li>
             <li><a href='./sobre.html'>Sobre</a></li>
+            <li><a href='./mural.html'>Chat</a></li>
         </ul>
         <div class="logar">
-            <img src="../img/logar.png" alt="">
+            <img src="..//assets/img/logar.png" alt="">
             <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                <h3><span id="b_usuario">usuário</span></h3>
             </div>
         </div>
     </nav>
@@ -127,7 +128,7 @@ $(document).ready(function() {
                 window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
                 window.location = "/dashboard/mural.html";
                 limparFormulario();
-                finalizarAguardar();
+                // finalizarAguardar();
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -135,7 +136,7 @@ $(document).ready(function() {
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
+            // finalizarAguardar();
         });
 
         return false;
@@ -235,7 +236,7 @@ $(document).ready(function() {
                         
                     }
 
-                    finalizarAguardar();
+                    // finalizarAguardar();
                 });
             } else {
                 throw ('Houve um erro na API!');

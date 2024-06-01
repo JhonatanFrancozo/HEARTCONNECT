@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeartConnect | QUIZ</title>
+    <link rel="stylesheet" href="../css/quiz.css">
+</head>
+<body onload="validarSessao()">
+<div class="janela">
+        <!-- header -->
+        <nav class="nav">
+            <img src="../assets/img/logo3.png" alt="Logo do site" class="logo">
+            <ul class="nav-links">
+                <li><a href='./quiz.html'>Quiz</a></li>
+                <li><a href='./sobre.html'>Sobre</a></li>
+                <li><a href='./mural.html'>Chat</a></li>
+            </ul>
+            <div class="logar">
+                <img src="..//assets/img/logar.png" alt="">
+                <div class="hello">
+                    <h3><span id="b_usuario">usuário</span></h3>
+                </div>
+            </div>
+        </nav>
+        <h2 id="txtprincipal">QUIZ HEARTSTOPPER</h2>
+        <!-- TERMINOheader -->
+        <div id="s1">
+        <div id="meio">
+            
+            <br><br><br>
+            <p>MEOWMEOWMEOWMEOWMEOWMEOWMEOWMMEOWMEOWMEOW</p>
+            <p>MEOWMEOWMEOWMEOWMEOWMEOWMEOWMMEOWMEOWMEOW</p>
+            <p>MEOWMEOWMEOWMEOWMEOWMEOWMEOWMMEOWMEOWMEOW</p>
+            <p>MEOWMEOWMEOWMEOWMEOWMEOWMEOWMMEOWMEOWMEOW</p>
+            <p>MEOWMEOWMEOWMEOWMEOWMEOWMEOWMMEOWMEOWMEOW</p>
+            <p>MEOWMEOWMEOWMEOWMEOWMEOWMEOWMMEOWMEOWMEOW</p>
+            <p>MEOWMEOWMEOWMEOWMEOWMEOWMEOWMMEOWMEOWMEOW</p>
+            <br>
+            <br>
+            <button onclick="passar()">Iniciar</button>
+        </div>
+    </div>
+
+    <div id="s2">
+        <div id="meio">
+            <br><br><br>
+            <p>MEOWMEOWMEOWMEOWMEOWMEOWMEOWMMEOWMEOW?</p>
+
+        <div id="perguntas">
+            <button id="p1" onclick="b1()">meowmeow</button>
+            <button id="p2" onclick="b2()">meowmiau</button>
+            <button id="p3" onclick="b3()">meowmeau</button>
+            <button id="p4" onclick="b4()">miaumiau</button>
+        </div>
+
+            <br>
+            <br>
+            
+        </div>
+    </div>
+
+    <div id="s3">
+        <div id="meio">
+            <br><br><br>
+            <p>MEOWMEOWMEOWMEOWMEOWMEOWMEOWMMEOWMEOW?</p>
+
+        <div id="perguntas">
+            <button id="p5" onclick="c1()">meowmeow</button>
+            <button id="p6" onclick="c2()">meowmiau</button>
+            <button id="p7" onclick="c3()">meowmeau</button>
+            <button id="p8" onclick="c4()">miaumiau</button>
+        </div>
+
+            <br>
+            <br>
+            
+        </div>
+    </div>
+
+    <div id="s4">
+        <div id="meio">
+            <br><br><br>
+            <p>MEOWMEOWMEOWMEOWMEOWMEOWMEOWMMEOWMEOW?</p>
+
+        <div id="perguntas">
+            <button id="p9" onclick="d1()">meowmeow</button>
+            <button id="p10" onclick="d2()">meowmiau</button>
+            <button id="p11" onclick="d3()">meowmeau</button>
+            <button id="p12" onclick="d4()">miaumiau</button>
+        </div>
+
+            <br>
+            <br>
+            
+        </div>
+    </div>
+
+    <div id="s5">
+        <div id="meio">
+            <br><br><br>
+            <p>MEOWMEOWMEOWMEOWMEOWMEOWMEOWMMEOWMEOW?</p>
+
+        <div id="perguntas">
+            <button id="p13" onclick="e1()">meowmeow</button>
+            <button id="p14" onclick="e2()">meowmiau</button>
+            <button id="p15" onclick="e3()">meowmeau</button>
+            <button id="p16" onclick="e4()">miaumiau</button>
+        </div>
+
+            <br>
+            <br>
+            
+        </div>
+    </div>
+
+    <div id="s6">
+        <div id="meio">
+            <br><br><br>
+            <p>MEOWMEOWMEOWMEOWMEOWMEOWMEOWMMEOWMEOW?</p>
+
+        <div id="perguntas">
+            <button id="p17" onclick="f1()">meowmeow</button>
+            <button id="p18" onclick="f2()">meowmiau</button>
+            <button id="p19" onclick="f3()">meowmeau</button>
+            <button id="p20" onclick="f4()">miaumiau</button>
+        </div>
+
+            <br>
+            <br>
+            
+        </div>
+    </div>
+
+    <div id="s7">
+        <div id="meio">
+            <br><br><br>
+            <p>MEOWMEOWMEOWMEOWMEOWMEOWMEOWMMEOWMEOW?</p>
+
+        <div id="perguntas">
+            <button id="p21" onclick="g1()">meowmeow</button>
+            <button id="p22" onclick="g2()">meowmiau</button>
+            <button id="p23" onclick="g3()">meowmeau</button>
+            <button id="p24" onclick="g4()">miaumiau</button>
+        </div>
+
+            <br>
+            <br>
+            
+        </div>
+    </div>
+
+    <div id="s8">
+        <div id="meio">
+            <br><br><br>
+            <p>MEOWMEOWMEOWMEOWMEOWMEOWMEOWMMEOWMEOW?</p>
+
+        <div id="perguntas">
+            <button id="p25" onclick="h1()">meowmeow</button>
+            <button id="p26" onclick="h2()">meowmiau</button>
+            <button id="p27" onclick="h3()">meowmeau</button>
+            <button id="p28" onclick="h4()">miaumiau</button>
+        </div>
+
+            <br>
+            <br>
+            
+        </div>
+    </div>
+
+
+    <div id="s9">
+        <div id="meio">
+            <br><br><br>
+            <p>WUIZ FINALIZADO!</p>
+
+            RANK
+
+            <br>
+            <br>
+            
+        </div>
+    </div>
+
+</div>
+    <script>
+        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    </script>
+</body>
+</html>
+<script>
+    s1.style.display="block";
+    s2.style.display="none";
+    s3.style.display="none";
+    s4.style.display="none";
+    s5.style.display="none";
+    s6.style.display="none";
+    s7.style.display="none";
+    s8.style.display="none";
+    s9.style.display="none";
+    var pontos = [];
+
+    function passar() {
+        s1.style.display="none";
+        s2.style.display="block";
+    }
+
+    // primeira
+
+    function b1() {
+        if (p1.onclick) {
+            console.log('Botão com id p1 foi clicado.');
+            pontos.push(5);
+            console.log(pontos);
+            p1.style.backgroundColor = 'green';
+            setTimeout(function() {
+            s2.style.display = "none";
+            s3.style.display = "block";
+        }, 2000);
+        } 
+    }
+    function b2() {
+        if (p2.onclick) {
+            console.log('Botão com id p2 foi clicado.');
+            p2.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s2.style.display = "none";
+            s3.style.display = "block";
+        }, 2000);
+        }
+    }
+    function b3() {
+        if (p3.onclick) {
+            console.log('Botão com id p3 foi clicado.');
+            p3.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s2.style.display = "none";
+            s3.style.display = "block";
+        }, 2000);
+        }
+    }
+    function b4() {
+        if (p4.onclick) {
+            console.log('Botão com id p4 foi clicado.');
+            p4.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s2.style.display = "none";
+            s3.style.display = "block";
+        }, 2000);
+        }
+    }
+
+    // segunda
+
+    function c1() {
+        if (p5.onclick) {
+            console.log('Botão com id p5 foi clicado.');
+            p5.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s3.style.display = "none";
+            s4.style.display = "block";
+        }, 2000);
+        } 
+    }
+    function c2() {
+        if (p6.onclick) {
+            console.log('Botão com id p6 foi clicado.');
+            p6.style.backgroundColor = 'green';
+            pontos.push(5);
+            console.log(pontos);
+            setTimeout(function() {
+            s3.style.display = "none";
+            s4.style.display = "block";
+        }, 2000);
+        }
+    }
+    function c3() {
+        if (p7.onclick) {
+            console.log('Botão com id p7 foi clicado.');
+            p7.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s3.style.display = "none";
+            s4.style.display = "block";
+        }, 2000);
+        }
+    }
+    function c4() {
+        if (p8.onclick) {
+            console.log('Botão com id p8 foi clicado.');
+            p8.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s3.style.display = "none";
+            s4.style.display = "block";
+        }, 2000);
+        }
+    }
+
+    // terceira
+
+    function d1() {
+        if (p9.onclick) {
+            console.log('Botão com id p9 foi clicado.');
+            p9.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s4.style.display = "none";
+            s5.style.display = "block";
+        }, 2000);
+        } 
+    }
+    function d2() {
+        if (p10.onclick) {
+            console.log('Botão com id p10 foi clicado.');
+            p10.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s4.style.display = "none";
+            s5.style.display = "block";
+        }, 2000);
+        }
+    }
+    function d3() {
+        if (p11.onclick) {
+            console.log('Botão com id p11 foi clicado.');
+            p11.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s4.style.display = "none";
+            s5.style.display = "block";
+        }, 2000);
+        }
+    }
+    function d4() {
+        if (p12.onclick) {
+            console.log('Botão com id p12 foi clicado.');
+            p12.style.backgroundColor = 'green';
+            pontos.push(5);
+            console.log(pontos);
+            setTimeout(function() {
+            s4.style.display = "none";
+            s5.style.display = "block";
+        }, 2000);
+        }
+    }
+          
+    // quarta
+
+    function e1() {
+        if (p13.onclick) {
+            console.log('Botão com id p13 foi clicado.');
+            p13.style.backgroundColor = 'green';
+            pontos.push(5);
+            console.log(pontos);
+            setTimeout(function() {
+            s5.style.display = "none";
+            s6.style.display = "block";
+        }, 2000);
+        } 
+    }
+    function e2() {
+        if (p14.onclick) {
+            console.log('Botão com id p14 foi clicado.');
+            p14.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s5.style.display = "none";
+            s6.style.display = "block";
+        }, 2000);
+        }
+    }
+    function e3() {
+        if (p15.onclick) {
+            console.log('Botão com id p15 foi clicado.');
+            p15.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s5.style.display = "none";
+            s6.style.display = "block";
+        }, 2000);
+        }
+    }
+    function e4() {
+        if (p16.onclick) {
+            console.log('Botão com id p16 foi clicado.');
+            p16.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s5.style.display = "none";
+            s6.style.display = "block";
+        }, 2000);
+        }
+    }
+
+    // quinta
+
+    function f1() {
+        if (p17.onclick) {
+            console.log('Botão com id p17 foi clicado.');
+            p17.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s6.style.display = "none";
+            s7.style.display = "block";
+        }, 2000);
+        } 
+    }
+    function f2() {
+        if (p18.onclick) {
+            console.log('Botão com id p18 foi clicado.');
+            p18.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s6.style.display = "none";
+            s7.style.display = "block";
+        }, 2000);
+        }
+    }
+    function f3() {
+        if (p19.onclick) {
+            console.log('Botão com id p19 foi clicado.');
+            p19.style.backgroundColor = 'green';
+            pontos.push(5);
+            console.log(pontos);
+            setTimeout(function() {
+            s6.style.display = "none";
+            s7.style.display = "block";
+        }, 2000);
+        }
+    }
+    function f4() {
+        if (p20.onclick) {
+            console.log('Botão com id p20 foi clicado.');
+            p20.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s6.style.display = "none";
+            s7.style.display = "block";
+        }, 2000);
+        }
+    }
+    
+    // sexta
+
+    function g1() {
+        if (p21.onclick) {
+            console.log('Botão com id p21 foi clicado.');
+            p21.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s7.style.display = "none";
+            s8.style.display = "block";
+        }, 2000);
+        } 
+    }
+    function g2() {
+        if (p22.onclick) {
+            console.log('Botão com id p22 foi clicado.');
+            p22.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s7.style.display = "none";
+            s8.style.display = "block";
+        }, 2000);
+        }
+    }
+    function g3() {
+        if (p23.onclick) {
+            console.log('Botão com id p23 foi clicado.');
+            p23.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s7.style.display = "none";
+            s8.style.display = "block";
+        }, 2000);
+        }
+    }
+    function g4() {
+        if (p24.onclick) {
+            console.log('Botão com id p24 foi clicado.');
+            p24.style.backgroundColor = 'green';
+            pontos.push(5);
+            console.log(pontos);
+            setTimeout(function() {
+            s7.style.display = "none";
+            s8.style.display = "block";
+        }, 2000);
+        }
+    }
+
+    // 
+
+    function h1() {
+        if (p25.onclick) {
+            console.log('Botão com id p25 foi clicado.');
+            p25.style.backgroundColor = 'green';
+            pontos.push(5);
+            console.log(pontos);
+            setTimeout(function() {
+            s8.style.display = "none";
+            s9.style.display = "block";
+        }, 2000);
+        } 
+    }
+    function h2() {
+        if (p26.onclick) {
+            console.log('Botão com id p26 foi clicado.');
+            p26.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s8.style.display = "none";
+            s9.style.display = "block";
+        }, 2000);
+        }
+    }
+    function h3() {
+        if (p27.onclick) {
+            console.log('Botão com id p27 foi clicado.');
+            p27.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s8.style.display = "none";
+            s9.style.display = "block";
+        }, 2000);
+        }
+    }
+    function h4() {
+        if (p28.onclick) {
+            console.log('Botão com id p28 foi clicado.');
+            p28.style.backgroundColor = 'red';
+            setTimeout(function() {
+            s8.style.display = "none";
+            s9.style.display = "block";
+        }, 2000);
+        }
+    }
+
+
+    
+</script>
