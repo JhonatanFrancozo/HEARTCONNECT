@@ -34,9 +34,8 @@
             <li><a href='./mural.html'>Chat</a></li>
         </ul>
         <div class="logar">
-            <img src="..//assets/img/logar.png" alt="">
             <div class="hello">
-                <h3><span id="b_usuario">usuário</span></h3>
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
         </div>
     </nav>
@@ -89,6 +88,7 @@
 </html>
 <script>
 b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+sessionStorage.ID_USUARIO;
 
 $(document).ready(function() {
         swal({
@@ -228,7 +228,7 @@ $(document).ready(function() {
                         // divPublicacao.appendChild(spanID);
                         divPublicacao.appendChild(spanNome);
                         divPublicacao.appendChild(spanTitulo);
-                        // divPublicacao.appendChild(divDescricao);
+                        //  divPublicacao.appendChild(divDescricao);
                         divPublicacao.appendChild(divButtons);
                         // divButtons.appendChild(btnEditar);
                         // divButtons.appendChild(btnDeletar);

@@ -176,6 +176,8 @@
 
             RANK
 
+            <div id="msg"></div>
+
             <br>
             <br>
             
@@ -189,6 +191,7 @@
 </body>
 </html>
 <script>
+    var pts = 0;
     s1.style.display="block";
     s2.style.display="none";
     s3.style.display="none";
@@ -198,7 +201,6 @@
     s7.style.display="none";
     s8.style.display="none";
     s9.style.display="none";
-    var pontos = [];
 
     function passar() {
         s1.style.display="none";
@@ -210,8 +212,8 @@
     function b1() {
         if (p1.onclick) {
             console.log('Botão com id p1 foi clicado.');
-            pontos.push(5);
-            console.log(pontos);
+            pts = pts + 5;
+            console.log(pts);
             p1.style.backgroundColor = 'green';
             setTimeout(function() {
             s2.style.display = "none";
@@ -266,8 +268,8 @@
         if (p6.onclick) {
             console.log('Botão com id p6 foi clicado.');
             p6.style.backgroundColor = 'green';
-            pontos.push(5);
-            console.log(pontos);
+            pts = pts + 5;
+            console.log(pts);
             setTimeout(function() {
             s3.style.display = "none";
             s4.style.display = "block";
@@ -331,8 +333,8 @@
         if (p12.onclick) {
             console.log('Botão com id p12 foi clicado.');
             p12.style.backgroundColor = 'green';
-            pontos.push(5);
-            console.log(pontos);
+            pts = pts + 5;
+            console.log(pts);
             setTimeout(function() {
             s4.style.display = "none";
             s5.style.display = "block";
@@ -346,8 +348,8 @@
         if (p13.onclick) {
             console.log('Botão com id p13 foi clicado.');
             p13.style.backgroundColor = 'green';
-            pontos.push(5);
-            console.log(pontos);
+            pts = pts + 5;
+            console.log(pts);
             setTimeout(function() {
             s5.style.display = "none";
             s6.style.display = "block";
@@ -411,8 +413,8 @@
         if (p19.onclick) {
             console.log('Botão com id p19 foi clicado.');
             p19.style.backgroundColor = 'green';
-            pontos.push(5);
-            console.log(pontos);
+            pts = pts + 5;
+            console.log(pts);
             setTimeout(function() {
             s6.style.display = "none";
             s7.style.display = "block";
@@ -466,8 +468,8 @@
         if (p24.onclick) {
             console.log('Botão com id p24 foi clicado.');
             p24.style.backgroundColor = 'green';
-            pontos.push(5);
-            console.log(pontos);
+            pts = pts + 5;
+            console.log(pts);
             setTimeout(function() {
             s7.style.display = "none";
             s8.style.display = "block";
@@ -481,11 +483,12 @@
         if (p25.onclick) {
             console.log('Botão com id p25 foi clicado.');
             p25.style.backgroundColor = 'green';
-            pontos.push(5);
-            console.log(pontos);
+            pts = pts + 5;
+            console.log(pts);
             setTimeout(function() {
             s8.style.display = "none";
             s9.style.display = "block";
+            a();
         }, 2000);
         } 
     }
@@ -496,6 +499,7 @@
             setTimeout(function() {
             s8.style.display = "none";
             s9.style.display = "block";
+            a();
         }, 2000);
         }
     }
@@ -506,6 +510,7 @@
             setTimeout(function() {
             s8.style.display = "none";
             s9.style.display = "block";
+            a();
         }, 2000);
         }
     }
@@ -516,10 +521,40 @@
             setTimeout(function() {
             s8.style.display = "none";
             s9.style.display = "block";
+            a();
+            console.log(pts);
         }, 2000);
         }
     }
 
+    function a() {
+    msg.innerHTML = `${pts}`;
+    console.log(pts);
 
-    
+    var ID_USUARIO = sessionStorage.ID_USUARIO;
+    fetch("/usuarios/quiz", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    idusuarioServer: ID_USUARIO,
+    pontuacaoServer: pts,
+  }),
+})
+.then(function(resposta) {
+    console.log("resposta:", resposta);
+    if (resposta.ok) {
+        // Trate o sucesso
+    } else {
+        throw "houve um erro ao responder";
+    }
+})
+.catch(function(resposta) {
+    console.log(`#erro: ${resposta}`);
+});
+}
+
+
+      
 </script>
