@@ -9,6 +9,7 @@
 </head>
 <body onload="validarSessao()">
 <div class="janela">
+    
         <!-- header -->
         <nav class="nav">
             <img src="../assets/img/logo3.png" alt="Logo do site" class="logo">
@@ -39,6 +40,7 @@
             <br>
             <br>
             <button onclick="passar()">Iniciar</button>
+            <button onclick="dash()">Visualizar Dashboard</button>
         </div>
     </div>
 
@@ -172,7 +174,7 @@
     <div id="s9">
         <div id="meio">
             <br><br><br>
-            <p>QUIZ FINALIZADO!</p>
+            <p>DASHBOARD DO QUIZ!</p>
             <div id="msg"></div>
     
             <div id="content-container">
@@ -190,29 +192,23 @@
     </div>
 
     <script>
-        const labels = [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-        ];
-    
+
         const data = {
-            labels: labels,
+            labels: ['Erros', 'Acertos'],
             datasets: [{
-                label: 'My First dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255. 99. 132)',
-                data: [0, 10, 5, 2, 20, 30, 45],
+                label: 'Erros e Acertos',
+                data: [0, 0],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)'
+                ],
+                hoverOffset: 4
             }]
         };
-    
+
         const config = {
-            type: 'line',
+            type: 'pie',
             data: data,
-            options: {}
         };
 
         const myChart = new Chart(
@@ -297,6 +293,13 @@
     s7.style.display="none";
     s8.style.display="none";
     s9.style.display="none";
+
+    function dash() {
+        s1.style.display="none";
+        s9.style.display="block";
+        rankgeral();
+        puxarerroacerto()
+    }
 
     function passar() {
         s1.style.display="none";
@@ -717,6 +720,8 @@ function b4() {
     function a() {
     msg.innerHTML += `${pts}`;
     console.log(pts);
+    console.log(erro);
+    console.log(acerto);
 
     var ID_USUARIO = sessionStorage.ID_USUARIO;
     fetch("/usuarios/quiz", {
@@ -727,12 +732,15 @@ function b4() {
         body: JSON.stringify({
             idusuarioServer: ID_USUARIO,
             pontuacaoServer: pts,
+            errosServer: erro,
+            acertosServer: acerto,
         }),
     })
     .then(function(resposta) {
         console.log("resposta:", resposta);
         if (resposta.ok) {
             rankgeral();
+            puxarerroacerto()
         } else {
             throw "houve um erro ao responder";
         }
@@ -741,8 +749,6 @@ function b4() {
         console.log(`#erro: ${resposta}`);
     });
 }
-
-
 
 
     function rankgeral() {
@@ -773,8 +779,32 @@ function b4() {
 });
 }
 
+function puxarerroacerto() {
+    var ID_USUARIO = sessionStorage.ID_USUARIO;
+            fetch(`/usuarios/puxarerroacerto?idusuario=${ID_USUARIO}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            })
+            .then(function(resposta) {
+                console.log("resposta:", resposta);
+                if (!resposta.ok) {
+                    throw new Error("erro ao obter erros e acertos!");
+                }
+                return resposta.json();
+            })
+            .then(function(data) {
+                console.log("erros e acertos:", data);
+                const erros = data.map(item => item.erros);
+                const acertos = data.map(item => item.acertos);
+                myChart.data.labels = ['Erros', 'Acertos'];
+                myChart.data.datasets[0].data = [erros[0], acertos[0]];
+                myChart.update();
+            })
+            .catch(function(erro) {
+                console.log(`#erro: ${erro}`);
+            });
+        }
 
-
-
-      
 </script>

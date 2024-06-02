@@ -20,4 +20,8 @@ router.get("/rankgeral", function (req, res) {
     usuarioController.rankgeral(req, res);
 });
 
+router.get("/puxarerroacerto", function (req, res) {
+    usuarioController.puxarerroacerto(req, res);
+});
+
 module.exports = router;

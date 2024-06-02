@@ -22,40 +22,57 @@ function cadastrar(nome, email, senha) {
     return database.executar(instrucaoSql);
 }
 
-function quiz(idusuario, pontuacao) {
-    console.log("ACESSEI O USUARIO MODEL \n\n function quiz():", idusuario, pontuacao);
+function quiz(idusuario, pontuacao, erro, acerto) {
+    console.log("ACESSEI O USUARIO MODEL \n\n function quiz():", idusuario, pontuacao, erro, acerto);
     
     var instrucaoSql = `
-        INSERT INTO pontuacaorank (idusuario, pontuacao) VALUES ('${idusuario}', '${pontuacao}');
+        INSERT INTO pontuacaorank (idusuario, pontuacao, erros, acertos) 
+        VALUES ('${idusuario}', '${pontuacao}', '${erro}', '${acerto}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
 function rankgeral() {
-    
     var instrucaoSql = `
     SELECT 
-    u.nome, 
-    (
-        SELECT pr.pontuacao 
-        FROM pontuacaorank pr
-        WHERE pr.idusuario = u.id 
-        ORDER BY pr.idpontuacao DESC LIMIT 1
-    ) AS ultima_pontuacao
-FROM 
-    usuario u
-ORDER BY 
-    ultima_pontuacao DESC;
-
+        u.nome, 
+        (
+            SELECT pr.pontuacao 
+            FROM pontuacaorank pr
+            WHERE pr.idusuario = u.id 
+            ORDER BY pr.idpontuacao DESC LIMIT 1
+        ) AS ultima_pontuacao
+    FROM 
+        usuario u
+    ORDER BY 
+        ultima_pontuacao DESC;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
+
+function puxarerroacerto() {
+    var instrucaoSql = `
+    SELECT pr.idusuario, pr.pontuacao, pr.erros, pr.acertos
+    FROM pontuacaorank pr
+    INNER JOIN (
+        SELECT idusuario, MAX(idpontuacao) AS max_id
+        FROM pontuacaorank
+        GROUP BY idusuario
+    ) sub ON pr.idusuario = sub.idusuario AND pr.idpontuacao = sub.max_id;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
+
 module.exports = {
     autenticar,
     cadastrar,
     quiz,
-    rankgeral
+    rankgeral,
+    puxarerroacerto
 };
