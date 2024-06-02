@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HeartConnect | QUIZ</title>
     <link rel="stylesheet" href="../css/quiz.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body onload="validarSessao()">
 <div class="janela">
@@ -17,9 +18,8 @@
                 <li><a href='./mural.html'>Chat</a></li>
             </ul>
             <div class="logar">
-                <img src="..//assets/img/logar.png" alt="">
                 <div class="hello">
-                    <h3><span id="b_usuario">usuário</span></h3>
+                    <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
                 </div>
             </div>
         </nav>
@@ -175,6 +175,9 @@
             <p>WUIZ FINALIZADO!</p>
 
             RANK
+            <div>
+                <canvas id="myChart"></canvas>
+            </div>
 
             <div id="msg"></div>
 
@@ -183,6 +186,40 @@
             
         </div>
     </div>
+
+    <script>
+        const labels = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+        ];
+    
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255. 99. 132)',
+                data: [0, 10, 5, 2, 20, 30, 45],
+            }]
+        };
+    
+        const config = {
+            type: 'line',
+            data: data,
+            options: {}
+        };
+    </script>
+    
+    <script>
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
 
 </div>
     <script>
@@ -554,6 +591,7 @@
     console.log(`#erro: ${resposta}`);
 });
 }
+
 
 
       

@@ -180,5 +180,11 @@ body {
     flex-direction: column;
     height: 100%;
     text-align: center;
+    font-family: 'Heart fino';
 }
+
+h3 {
+    font-family: 'Heart fino';
+}
+
 

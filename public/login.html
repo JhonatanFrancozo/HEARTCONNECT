@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.all.min.js"></script>
     <title>HeartConnect | LOGIN</title>
 
     <script src="./js/sessao.js"></script>
@@ -60,19 +61,34 @@
 <script>
 
 
-    function entrar() {
+function entrar() {
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+    if (emailVar === "" || senhaVar === "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Todos os campos devem ser preenchidos!',
+        });
+        return false;
+    } else if (emailVar.indexOf('@') === -1) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'O e-mail deve conter "@"!',
+      });
+      return false;
+    }else if (emailVar.length < 3 || senhaVar.length < 3) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Email e senha devem ter pelo menos 3 caracteres!',
+        });
+        return false;
+    } else {
+        setTimeout(sumirMensagem, 5000);
+    }
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
