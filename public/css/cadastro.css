@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'Heart fino';
+  src: url(../assets/fontes/DK\ Cool\ Crayon.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Heart';
+  src: url(../assets/fontes/Heavy\ Trip\ -\ Demo.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   background-image: url(../assets/img/fundologincadastro.png);
   background-size: cover; 
@@ -58,7 +72,32 @@ body {
   background-image: url(../assets/img/button.png);
   background-size: contain;
   background-repeat: no-repeat;
-  width: 150px;
-  height: 50px;
+  border-radius: 20px;
+  width: 140px;
+  height: 40px;
   margin-top: 20px;
+  font-family: 'Heart';
+  font-size: 20px;
+}
+
+.campo span {
+  font-family: 'Heart Fino';
+}
+
+h2 {
+  font-family: 'Heart Fino';
+}
+
+h4 {
+  font-family: 'Heart';
+  font-size: 20px;
+}
+
+h3 {
+  font-family: 'Heart ';
+  font-size: 20px;
+}
+
+input::placeholder {
+  font-family: 'Heart Fino';
 }

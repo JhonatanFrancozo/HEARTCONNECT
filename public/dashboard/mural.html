@@ -24,7 +24,6 @@
 
     <div class="janela">
 
-
         <!-- header -->
     <nav class="nav">
         <img src="../assets/img/logo3.png" alt="Logo do site" class="logo">
@@ -108,6 +107,16 @@ $(document).ready(function() {
 
     function publicar() {
         var idUsuario = sessionStorage.ID_USUARIO;
+
+        var titulo = document.getElementById('titulo').value;
+        
+        if (titulo.trim() === '') {
+            swal("Erro", "O campo de comentário não pode estar vazio!", "error");
+            return false;
+        } else if (titulo.trim().length < 3) {
+            swal("Erro", "O comentário deve ter pelo menos 3 caracteres!", "error");
+            return false;
+        }
 
         var corpo = {
             titulo: form_postagem.titulo.value,

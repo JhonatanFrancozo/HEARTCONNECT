@@ -172,18 +172,20 @@
     <div id="s9">
         <div id="meio">
             <br><br><br>
-            <p>WUIZ FINALIZADO!</p>
-
-            RANK
-            <div>
-                <canvas id="myChart"></canvas>
-            </div>
-
+            <p>QUIZ FINALIZADO!</p>
             <div id="msg"></div>
-
+    
+            <div id="content-container">
+                <div id="message-container">
+                    <canvas id="myChart2"></canvas>
+                </div>
+                <div id="chart-container">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+    
             <br>
             <br>
-            
         </div>
     </div>
 
@@ -212,14 +214,69 @@
             data: data,
             options: {}
         };
-    </script>
-    
-    <script>
+
         const myChart = new Chart(
             document.getElementById('myChart'),
             config
         );
     </script>
+
+
+
+
+
+<script>
+    const labels2 = ['January', 'February', 'March', 'April', 'May', 'June'];
+    const data2 = {
+        labels: labels2,
+        datasets: [{
+            label: 'My First Dataset',
+            data: [65, 59, 80, 81, 56, 55, 40],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(201, 203, 207, 0.2)'
+            ],
+            borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)'
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    const config2 = {
+        type: 'bar',
+        data: data2,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        },
+    };
+
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
+</script>
+
+    
+
+        
+
+
 
 </div>
     <script>
@@ -229,6 +286,8 @@
 </html>
 <script>
     var pts = 0;
+    var acerto = 0;
+    var erro = 0;
     s1.style.display="block";
     s2.style.display="none";
     s3.style.display="none";
@@ -244,92 +303,123 @@
         s2.style.display="block";
     }
 
+    function disableButtons() {
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => button.disabled = true);
+}
+
+// Função para ativar todos os botões
+function enableButtons() {
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => button.disabled = false);
+}
+
     // primeira
 
-    function b1() {
-        if (p1.onclick) {
-            console.log('Botão com id p1 foi clicado.');
-            pts = pts + 5;
-            console.log(pts);
-            p1.style.backgroundColor = 'green';
-            setTimeout(function() {
-            s2.style.display = "none";
-            s3.style.display = "block";
-        }, 2000);
-        } 
-    }
-    function b2() {
-        if (p2.onclick) {
-            console.log('Botão com id p2 foi clicado.');
-            p2.style.backgroundColor = 'red';
-            setTimeout(function() {
-            s2.style.display = "none";
-            s3.style.display = "block";
-        }, 2000);
-        }
-    }
-    function b3() {
-        if (p3.onclick) {
-            console.log('Botão com id p3 foi clicado.');
-            p3.style.backgroundColor = 'red';
-            setTimeout(function() {
-            s2.style.display = "none";
-            s3.style.display = "block";
-        }, 2000);
-        }
-    }
-    function b4() {
-        if (p4.onclick) {
-            console.log('Botão com id p4 foi clicado.');
-            p4.style.backgroundColor = 'red';
-            setTimeout(function() {
-            s2.style.display = "none";
-            s3.style.display = "block";
-        }, 2000);
-        }
-    }
+function b1() {
+    disableButtons();
+    console.log('Botão com id p1 foi clicado.');
+    pts = pts + 5;
+    acerto = acerto + 1;
+    console.log(pts);
+    p1.style.backgroundColor = 'green';
+    setTimeout(function() {
+        s2.style.display = "none";
+        s3.style.display = "block";
+        enableButtons();
+    }, 2000);
+}
+
+function b2() {
+    disableButtons();
+    console.log('Botão com id p2 foi clicado.');
+    p2.style.backgroundColor = 'red';
+    erro = erro + 1;
+    setTimeout(function() {
+        s2.style.display = "none";
+        s3.style.display = "block";
+        enableButtons();
+    }, 2000);
+}
+
+function b3() {
+    disableButtons();
+    console.log('Botão com id p3 foi clicado.');
+    p3.style.backgroundColor = 'red';
+    erro = erro + 1;
+    setTimeout(function() {
+        s2.style.display = "none";
+        s3.style.display = "block";
+        enableButtons();
+    }, 2000);
+}
+
+function b4() {
+    disableButtons();
+    console.log('Botão com id p4 foi clicado.');
+    p4.style.backgroundColor = 'red';
+    erro = erro + 1;
+    setTimeout(function() {
+        s2.style.display = "none";
+        s3.style.display = "block";
+        enableButtons();
+    }, 2000);
+}
+
 
     // segunda
 
     function c1() {
+        disableButtons();
         if (p5.onclick) {
             console.log('Botão com id p5 foi clicado.');
             p5.style.backgroundColor = 'red';
+            erro = erro + 1;
             setTimeout(function() {
             s3.style.display = "none";
             s4.style.display = "block";
+            enableButtons();
         }, 2000);
         } 
     }
     function c2() {
+        disableButtons();
         if (p6.onclick) {
             console.log('Botão com id p6 foi clicado.');
             p6.style.backgroundColor = 'green';
+            acerto = acerto + 1;
             pts = pts + 5;
             console.log(pts);
             setTimeout(function() {
             s3.style.display = "none";
             s4.style.display = "block";
+            enableButtons();
         }, 2000);
         }
     }
     function c3() {
+        disableButtons();
         if (p7.onclick) {
             console.log('Botão com id p7 foi clicado.');
             p7.style.backgroundColor = 'red';
+            erro = erro + 1;
             setTimeout(function() {
             s3.style.display = "none";
             s4.style.display = "block";
+            enableButtons();
         }, 2000);
         }
     }
     function c4() {
+        disableButtons();
         if (p8.onclick) {
             console.log('Botão com id p8 foi clicado.');
             p8.style.backgroundColor = 'red';
+            erro = erro + 1;
             setTimeout(function() {
             s3.style.display = "none";
             s4.style.display = "block";
+            enableButtons();
         }, 2000);
         }
     }
@@ -337,44 +427,56 @@
     // terceira
 
     function d1() {
+        disableButtons();
         if (p9.onclick) {
             console.log('Botão com id p9 foi clicado.');
             p9.style.backgroundColor = 'red';
+            erro = erro + 1;
             setTimeout(function() {
             s4.style.display = "none";
             s5.style.display = "block";
+            enableButtons();
         }, 2000);
         } 
     }
     function d2() {
+        disableButtons();
         if (p10.onclick) {
             console.log('Botão com id p10 foi clicado.');
             p10.style.backgroundColor = 'red';
+            erro = erro + 1;
             setTimeout(function() {
             s4.style.display = "none";
             s5.style.display = "block";
+            enableButtons();
         }, 2000);
         }
     }
     function d3() {
+        disableButtons();
         if (p11.onclick) {
             console.log('Botão com id p11 foi clicado.');
             p11.style.backgroundColor = 'red';
+            erro = erro + 1;
             setTimeout(function() {
             s4.style.display = "none";
             s5.style.display = "block";
+            enableButtons();
         }, 2000);
         }
     }
     function d4() {
+        disableButtons();
         if (p12.onclick) {
             console.log('Botão com id p12 foi clicado.');
             p12.style.backgroundColor = 'green';
+            acerto = acerto + 1;
             pts = pts + 5;
             console.log(pts);
             setTimeout(function() {
             s4.style.display = "none";
             s5.style.display = "block";
+            enableButtons();
         }, 2000);
         }
     }
@@ -382,44 +484,56 @@
     // quarta
 
     function e1() {
+        disableButtons();
         if (p13.onclick) {
             console.log('Botão com id p13 foi clicado.');
             p13.style.backgroundColor = 'green';
+            acerto = acerto + 1;
             pts = pts + 5;
             console.log(pts);
             setTimeout(function() {
             s5.style.display = "none";
             s6.style.display = "block";
+            enableButtons();
         }, 2000);
         } 
     }
     function e2() {
+        disableButtons();
         if (p14.onclick) {
             console.log('Botão com id p14 foi clicado.');
             p14.style.backgroundColor = 'red';
+            erro = erro + 1;
             setTimeout(function() {
             s5.style.display = "none";
             s6.style.display = "block";
+            enableButtons();
         }, 2000);
         }
     }
     function e3() {
+        disableButtons();
         if (p15.onclick) {
             console.log('Botão com id p15 foi clicado.');
             p15.style.backgroundColor = 'red';
+            erro = erro + 1;
             setTimeout(function() {
             s5.style.display = "none";
             s6.style.display = "block";
+            enableButtons();
         }, 2000);
         }
     }
     function e4() {
+        disableButtons();
         if (p16.onclick) {
             console.log('Botão com id p16 foi clicado.');
             p16.style.backgroundColor = 'red';
+            erro = erro + 1;
             setTimeout(function() {
             s5.style.display = "none";
             s6.style.display = "block";
+            enableButtons();
         }, 2000);
         }
     }
@@ -427,44 +541,56 @@
     // quinta
 
     function f1() {
+        disableButtons();
         if (p17.onclick) {
             console.log('Botão com id p17 foi clicado.');
             p17.style.backgroundColor = 'red';
+            erro = erro + 1;
             setTimeout(function() {
             s6.style.display = "none";
             s7.style.display = "block";
+            enableButtons();
         }, 2000);
         } 
     }
     function f2() {
+        disableButtons();
         if (p18.onclick) {
             console.log('Botão com id p18 foi clicado.');
             p18.style.backgroundColor = 'red';
+            erro = erro + 1;
             setTimeout(function() {
             s6.style.display = "none";
             s7.style.display = "block";
+            enableButtons();
         }, 2000);
         }
     }
     function f3() {
+        disableButtons();
         if (p19.onclick) {
             console.log('Botão com id p19 foi clicado.');
             p19.style.backgroundColor = 'green';
+            acerto = acerto + 1;
             pts = pts + 5;
             console.log(pts);
             setTimeout(function() {
             s6.style.display = "none";
             s7.style.display = "block";
+            enableButtons();
         }, 2000);
         }
     }
     function f4() {
+        disableButtons();
         if (p20.onclick) {
             console.log('Botão com id p20 foi clicado.');
             p20.style.backgroundColor = 'red';
+            erro = erro + 1;
             setTimeout(function() {
             s6.style.display = "none";
             s7.style.display = "block";
+            enableButtons();
         }, 2000);
         }
     }
@@ -472,44 +598,56 @@
     // sexta
 
     function g1() {
+        disableButtons();
         if (p21.onclick) {
             console.log('Botão com id p21 foi clicado.');
             p21.style.backgroundColor = 'red';
+            erro = erro + 1;
             setTimeout(function() {
             s7.style.display = "none";
             s8.style.display = "block";
+            enableButtons();
         }, 2000);
         } 
     }
     function g2() {
+        disableButtons();
         if (p22.onclick) {
             console.log('Botão com id p22 foi clicado.');
             p22.style.backgroundColor = 'red';
+            erro = erro + 1;
             setTimeout(function() {
             s7.style.display = "none";
             s8.style.display = "block";
+            enableButtons();
         }, 2000);
         }
     }
     function g3() {
+        disableButtons();
         if (p23.onclick) {
             console.log('Botão com id p23 foi clicado.');
             p23.style.backgroundColor = 'red';
+            erro = erro + 1;
             setTimeout(function() {
             s7.style.display = "none";
             s8.style.display = "block";
+            enableButtons();
         }, 2000);
         }
     }
     function g4() {
+        disableButtons();
         if (p24.onclick) {
             console.log('Botão com id p24 foi clicado.');
             p24.style.backgroundColor = 'green';
+            acerto = acerto + 1;
             pts = pts + 5;
             console.log(pts);
             setTimeout(function() {
             s7.style.display = "none";
             s8.style.display = "block";
+            enableButtons();
         }, 2000);
         }
     }
@@ -517,47 +655,59 @@
     // 
 
     function h1() {
+        disableButtons();
         if (p25.onclick) {
             console.log('Botão com id p25 foi clicado.');
             p25.style.backgroundColor = 'green';
+            acerto = acerto + 1;
             pts = pts + 5;
             console.log(pts);
             setTimeout(function() {
             s8.style.display = "none";
             s9.style.display = "block";
+            enableButtons();
             a();
         }, 2000);
         } 
     }
     function h2() {
+        disableButtons();
         if (p26.onclick) {
             console.log('Botão com id p26 foi clicado.');
             p26.style.backgroundColor = 'red';
+            erro = erro + 1;
             setTimeout(function() {
             s8.style.display = "none";
             s9.style.display = "block";
+            enableButtons();
             a();
         }, 2000);
         }
     }
     function h3() {
+        disableButtons();
         if (p27.onclick) {
             console.log('Botão com id p27 foi clicado.');
             p27.style.backgroundColor = 'red';
+            erro = erro + 1;
             setTimeout(function() {
             s8.style.display = "none";
             s9.style.display = "block";
+            enableButtons();
             a();
         }, 2000);
         }
     }
     function h4() {
+        disableButtons();
         if (p28.onclick) {
             console.log('Botão com id p28 foi clicado.');
             p28.style.backgroundColor = 'red';
+            erro = erro + 1;
             setTimeout(function() {
             s8.style.display = "none";
             s9.style.display = "block";
+            enableButtons();
             a();
             console.log(pts);
         }, 2000);
@@ -565,32 +715,64 @@
     }
 
     function a() {
-    msg.innerHTML = `${pts}`;
+    msg.innerHTML += `${pts}`;
     console.log(pts);
 
     var ID_USUARIO = sessionStorage.ID_USUARIO;
     fetch("/usuarios/quiz", {
-  method: "POST",
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            idusuarioServer: ID_USUARIO,
+            pontuacaoServer: pts,
+        }),
+    })
+    .then(function(resposta) {
+        console.log("resposta:", resposta);
+        if (resposta.ok) {
+            rankgeral();
+        } else {
+            throw "houve um erro ao responder";
+        }
+    })
+    .catch(function(resposta) {
+        console.log(`#erro: ${resposta}`);
+    });
+}
+
+
+
+
+    function rankgeral() {
+        var ID_USUARIO = sessionStorage.ID_USUARIO;
+    fetch(`/usuarios/rankgeral?idusuario=${sessionStorage.getItem('ID_USUARIO')}`, {
+  method: "GET",
   headers: {
     "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    idusuarioServer: ID_USUARIO,
-    pontuacaoServer: pts,
-  }),
+  }
 })
 .then(function(resposta) {
     console.log("resposta:", resposta);
-    if (resposta.ok) {
-        // Trate o sucesso
-    } else {
-        throw "houve um erro ao responder";
-    }
+    if (!resposta.ok) {
+        throw new Error("erro ao obter rank!");
+    }  return resposta.json();
 })
+.then(function(data){
+    console.log("ranking:", data);
+    const nomes = data.map(item => item.nome); 
+    const pontuacao = data.map(item => item.ultima_pontuacao);
+    myChart2.data.labels = nomes;
+    myChart2.data.datasets[0].data = pontuacao;
+    myChart2.update();
+})
+
 .catch(function(resposta) {
     console.log(`#erro: ${resposta}`);
 });
 }
+
 
 
 

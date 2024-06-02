@@ -60,7 +60,7 @@ body {
     justify-content: center;
     width: 70vw; 
     height: 70vh;
-    max-width: 700px; 
+    max-width: 900px; 
     padding: 10px;
     box-sizing: border-box;
     margin: auto;
@@ -188,3 +188,36 @@ h3 {
 }
 
 
+#content-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#chart-container, #message-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#chart-container {
+    margin-right: 10px;
+}
+
+#message-container {
+    margin-left: 10px;
+}
+
+#myChart {
+    max-width: 100%;
+    height: auto;
+}
+
+#msg {
+    font-family: 'Heart fino';
+    text-align: center;
+    line-height: 1.5;
+    font-size: 18px;
+    color: #333;
+}

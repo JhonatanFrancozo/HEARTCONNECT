@@ -32,8 +32,30 @@ function quiz(idusuario, pontuacao) {
     return database.executar(instrucaoSql);
 }
 
+function rankgeral() {
+    
+    var instrucaoSql = `
+    SELECT 
+    u.nome, 
+    (
+        SELECT pr.pontuacao 
+        FROM pontuacaorank pr
+        WHERE pr.idusuario = u.id 
+        ORDER BY pr.idpontuacao DESC LIMIT 1
+    ) AS ultima_pontuacao
+FROM 
+    usuario u
+ORDER BY 
+    ultima_pontuacao DESC;
+
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    quiz
+    quiz,
+    rankgeral
 };

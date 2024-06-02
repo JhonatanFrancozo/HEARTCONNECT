@@ -98,9 +98,29 @@ function quiz(req, res) {
     }
 }
 
+function rankgeral(req, res) {
+    var idusuario = req.query.idusuario;
+
+    if (idusuario == undefined) {
+        res.status(400).send("Seu id está undefined!");
+    } else {
+        usuarioModel.rankgeral(idusuario)
+            .then(function (resultado) {
+                res.json(resultado);
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao realizar o quiz! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
+
 
 module.exports = {
     autenticar,
     cadastrar,
-    quiz
+    quiz,
+    rankgeral
 }

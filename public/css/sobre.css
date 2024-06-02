@@ -126,3 +126,8 @@ body {
 ::-webkit-scrollbar-thumb {
     background: #F6C8B9;
 }
+
+#sobre {
+    color: #ffffff;
+    text-decoration: underline;
+}

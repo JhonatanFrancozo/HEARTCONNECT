@@ -31,16 +31,18 @@
                 <h2>Olá de volta!</h2>
                 <div class="formulario">
                     <div class="campo">
-                        <span>E-mail:</span>
+                        <span>Email</span>
                         <br>
                         <input id="email_input" id="inp" type="text" placeholder="Login" required>
                     </div>
                     <div class="campo">
-                        <span>Senha:</span>
+                        <span>Senha</span>
                         <br>
                         <input id="senha_input" id="inp" type="password" placeholder="******" required>
                     </div>
+
                     <button class="botao" onclick="entrar()">Entrar</button>
+                    <br>
                 </div>
 
                 <!-- <div id="div_aguardar" class="loading-div">
@@ -52,7 +54,7 @@
         </div>
     </div>
 
-    
+
 
 </body>
 
@@ -61,34 +63,34 @@
 <script>
 
 
-function entrar() {
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
+    function entrar() {
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
 
-    if (emailVar === "" || senhaVar === "") {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Todos os campos devem ser preenchidos!',
-        });
-        return false;
-    } else if (emailVar.indexOf('@') === -1) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'O e-mail deve conter "@"!',
-      });
-      return false;
-    }else if (emailVar.length < 3 || senhaVar.length < 3) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Email e senha devem ter pelo menos 3 caracteres!',
-        });
-        return false;
-    } else {
-        setTimeout(sumirMensagem, 5000);
-    }
+        if (emailVar === "" || senhaVar === "") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Todos os campos devem ser preenchidos!',
+            });
+            return false;
+        } else if (emailVar.indexOf('@') === -1) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'O e-mail deve conter "@"!',
+            });
+            return false;
+        } else if (emailVar.length < 3 || senhaVar.length < 3) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Email e senha devem ter pelo menos 3 caracteres!',
+            });
+            return false;
+        } else {
+            setTimeout(sumirMensagem, 5000);
+        }
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);

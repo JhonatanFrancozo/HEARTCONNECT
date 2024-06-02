@@ -16,4 +16,8 @@ router.post("/quiz", function (req, res) {
     usuarioController.quiz(req, res);
 });
 
+router.get("/rankgeral", function (req, res) {
+    usuarioController.rankgeral(req, res);
+});
+
 module.exports = router;

@@ -18,12 +18,26 @@ CREATE TABLE usuario (
     CONSTRAINT fkUsuarioADM FOREIGN KEY (fkADM) REFERENCES usuario(id));
 
 CREATE TABLE chat (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    comentario VARCHAR(150),
-    fk_usuario INT,
-    FOREIGN KEY (fk_usuario) REFERENCES usuario(id));
-
-
-INSERT INTO chat (comentario, fk_usuario) VALUES ('Este é um comentário de exemplo', 1);
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	comentario VARCHAR(150),
+	fk_usuario INT,
+	FOREIGN KEY (fk_usuario) REFERENCES usuario(id));
+    
+CREATE TABLE pontuacaorank (
+	idpontuacao INT auto_increment,
+    idusuario INT,
+    PRIMARY KEY (idpontuacao, idusuario),
+    pontuacao INT,
+    FOREIGN KEY (idusuario) REFERENCES usuario(id));
+    
+SELECT * FROM pontuacaorank;
 
 SELECT * FROM usuario;
+
+SELECT * FROM chat;
+
+
+
+
+
+
