@@ -130,6 +130,11 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
+                    Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Login invalido!',
+            });
 
                 });
             }
