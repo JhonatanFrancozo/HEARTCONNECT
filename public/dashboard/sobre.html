@@ -2,10 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/sobre.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HeartConnect | SOBRE</title>
 </head>
-<body>
-    
+    <body onload="validarSessao()">
+        <div class="janela">
+        <!-- header -->
+        <nav class="nav">
+            <img src="../assets/img/logo3.png" alt="Logo do site" class="logo">
+            <ul class="nav-links">
+                <li><a href='./quiz.html'>Quiz</a></li>
+                <li><a href='./sobre.html'>Sobre</a></li>
+                <li><a href='./mural.html'>Chat</a></li>
+            </ul>
+            <div class="logar">
+                <div class="hello">
+                    <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                </div>
+            </div>
+        </nav>
+        <!-- TERMINOheader -->
+
+
+
+
 </body>
 </html>
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+</script>

@@ -122,6 +122,7 @@ function rankgeral(req, res) {
     }
 }
 
+
 function puxarerroacerto(req, res) {
     var idusuario = req.query.idusuario;
 

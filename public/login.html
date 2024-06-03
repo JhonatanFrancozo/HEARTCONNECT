@@ -54,15 +54,15 @@
         </div>
     </div>
 
-
+    <div id="loading" style="display: none;">
+        <img src="../assets/img/gif.png!sw800" alt="Loading...">
+    </div>
 
 </body>
 
 </html>
 
 <script>
-
-
     function entrar() {
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
@@ -92,6 +92,8 @@
             setTimeout(sumirMensagem, 5000);
         }
 
+        document.getElementById('loading').style.display = 'block';
+
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
 
@@ -116,16 +118,14 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    // sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
-                        window.location = "./dashboard/mural.html";
-                    }, 1000); // apenas para exibir o loading
-
+                        window.location = "./dashboard/sobre.html";
+                    }, 2000); 
                 });
 
             } else {
-
+                document.getElementById('loading').style.display = 'none';
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
@@ -135,8 +135,9 @@
             }
 
         }).catch(function (erro) {
+            document.getElementById('loading').style.display = 'none';
             console.log(erro);
-        })
+        });
 
         return false;
     }
@@ -144,5 +145,4 @@
     function sumirMensagem() {
         cardErro.style.display = "none"
     }
-
 </script>

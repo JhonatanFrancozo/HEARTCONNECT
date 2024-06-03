@@ -53,21 +53,20 @@ function rankgeral() {
 }
 
 
-function puxarerroacerto() {
+function puxarerroacerto(idusuario) {
     var instrucaoSql = `
     SELECT pr.idusuario, pr.pontuacao, pr.erros, pr.acertos
     FROM pontuacaorank pr
     INNER JOIN (
         SELECT idusuario, MAX(idpontuacao) AS max_id
         FROM pontuacaorank
+        WHERE idusuario = ${idusuario}
         GROUP BY idusuario
     ) sub ON pr.idusuario = sub.idusuario AND pr.idpontuacao = sub.max_id;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-
-
 
 module.exports = {
     autenticar,

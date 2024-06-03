@@ -101,3 +101,19 @@ h3 {
 input::placeholder {
   font-family: 'Heart Fino';
 }
+
+
+#loading {
+  display: none;
+  text-align: center;
+  position: fixed;
+  top: 60%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+#loading img {
+  width: 500px;
+  height: 500px;
+}

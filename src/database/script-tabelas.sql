@@ -13,9 +13,7 @@ CREATE TABLE usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(70),
     email VARCHAR(70),
-    senha VARCHAR(50),
-    fkADM INT,
-    CONSTRAINT fkUsuarioADM FOREIGN KEY (fkADM) REFERENCES usuario(id));
+    senha VARCHAR(50));
 
 CREATE TABLE chat (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -28,6 +26,8 @@ CREATE TABLE pontuacaorank (
     idusuario INT,
     PRIMARY KEY (idpontuacao, idusuario),
     pontuacao INT,
+    erros INT,
+    acertos INT,
     FOREIGN KEY (idusuario) REFERENCES usuario(id));
     
 SELECT * FROM pontuacaorank;
@@ -35,6 +35,8 @@ SELECT * FROM pontuacaorank;
 SELECT * FROM usuario;
 
 SELECT * FROM chat;
+
+
 
 
 
