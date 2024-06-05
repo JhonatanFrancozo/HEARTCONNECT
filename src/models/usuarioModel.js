@@ -35,18 +35,17 @@ function quiz(idusuario, pontuacao, erro, acerto) {
 
 function rankgeral() {
     var instrucaoSql = `
-    SELECT 
-        u.nome, 
-        (
-            SELECT pr.pontuacao 
-            FROM pontuacaorank pr
-            WHERE pr.idusuario = u.id 
-            ORDER BY pr.idpontuacao DESC LIMIT 1
-        ) AS ultima_pontuacao
-    FROM 
-        usuario u
-    ORDER BY 
-        ultima_pontuacao DESC;
+    SELECT u.nome, pr.ultima_pontuacao
+    FROM usuario u 
+    JOIN ( 
+    SELECT pr.idusuario,
+    pr.pontuacao AS ultima_pontuacao
+    FROM pontuacaorank pr
+    WHERE pr.idpontuacao = (
+    SELECT MAX(pr2.idpontuacao)
+    FROM pontuacaorank pr2
+    WHERE pr2.idusuario = pr.idusuario)) pr ON u.id = pr.idusuario ORDER BY 
+    pr.ultima_pontuacao DESC LIMIT 10;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -62,7 +61,7 @@ function puxarerroacerto(idusuario) {
         FROM pontuacaorank
         WHERE idusuario = ${idusuario}
         GROUP BY idusuario
-    ) sub ON pr.idusuario = sub.idusuario AND pr.idpontuacao = sub.max_id;
+    ) sub ON pr.idusuario = sub.idusuario AND pr.idpontuacao = sub.max_id ;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

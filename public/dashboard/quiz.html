@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="../css/quiz.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body onload="validarSessao()">
-<div class="janela">
+    <body onload="validarSessao()">
+    <div class="janela">
     
         <!-- header -->
         <nav class="nav">
@@ -290,11 +290,11 @@
     <script>
         b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     </script>
-</body>
+    </body>
 </html>
 <script>
     var pts = 0;
-    var acerto = 0;
+    var acerto = [];
     var erro = 0;
     s1.style.display="block";
     s2.style.display="none";
@@ -352,7 +352,7 @@ function b1() {
     disableButtons();
     console.log('Botão com id p1 foi clicado.');
     pts = pts + 5;
-    acerto = acerto + 1;
+    acerto.push(1);
     console.log(pts);
     p1.style.backgroundColor = 'green';
     setTimeoutWithLoading(function() {
@@ -419,7 +419,7 @@ function b4() {
         if (p6.onclick) {
             console.log('Botão com id p6 foi clicado.');
             p6.style.backgroundColor = 'green';
-            acerto = acerto + 1;
+            acerto.push(1);
             pts = pts + 5;
             console.log(pts);
             setTimeoutWithLoading(function() {
@@ -502,7 +502,7 @@ function b4() {
         if (p12.onclick) {
             console.log('Botão com id p12 foi clicado.');
             p12.style.backgroundColor = 'green';
-            acerto = acerto + 1;
+            acerto.push(1);
             pts = pts + 5;
             console.log(pts);
             setTimeoutWithLoading(function() {
@@ -520,7 +520,7 @@ function b4() {
         if (p13.onclick) {
             console.log('Botão com id p13 foi clicado.');
             p13.style.backgroundColor = 'green';
-            acerto = acerto + 1;
+            acerto.push(1);
             pts = pts + 5;
             console.log(pts);
             setTimeoutWithLoading(function() {
@@ -603,7 +603,7 @@ function b4() {
         if (p19.onclick) {
             console.log('Botão com id p19 foi clicado.');
             p19.style.backgroundColor = 'green';
-            acerto = acerto + 1;
+            acerto.push(1);
             pts = pts + 5;
             console.log(pts);
             setTimeoutWithLoading(function() {
@@ -673,7 +673,7 @@ function b4() {
         if (p24.onclick) {
             console.log('Botão com id p24 foi clicado.');
             p24.style.backgroundColor = 'green';
-            acerto = acerto + 1;
+            acerto.push(1);
             pts = pts + 5;
             console.log(pts);
             setTimeoutWithLoading(function() {
@@ -684,14 +684,14 @@ function b4() {
         }
     }
 
-    // 
+    // sétima
 
     function h1() {
         disableButtons();
         if (p25.onclick) {
             console.log('Botão com id p25 foi clicado.');
             p25.style.backgroundColor = 'green';
-            acerto = acerto + 1;
+            acerto.push(1);
             pts = pts + 5;
             console.log(pts);
             setTimeoutWithLoading(function() {
@@ -746,7 +746,16 @@ function b4() {
         }
     }
 
-    function a() {
+    function somarAcertos() {
+    var total = 0;
+    for (var index = 0; index < acerto.length; index++) {
+        total += acerto[index];
+    }
+    return total;
+    }
+
+function a() {
+    var total = somarAcertos();
     msg.innerHTML += `Sua pontuação foi de ${pts} pontos!`;
     console.log(pts);
     console.log(erro);
@@ -762,7 +771,7 @@ function b4() {
             idusuarioServer: ID_USUARIO,
             pontuacaoServer: pts,
             errosServer: erro,
-            acertosServer: acerto,
+            acertosServer: total, 
         }),
     })
     .then(function(resposta) {
