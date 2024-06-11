@@ -12,7 +12,7 @@ USE HEARTCONNECT;
 CREATE TABLE usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(70),
-    email VARCHAR(70),
+    email VARCHAR (70) UNIQUE,
     senha VARCHAR(50));
 
 CREATE TABLE chat (
@@ -29,6 +29,7 @@ CREATE TABLE pontuacaorank (
     erros INT,
     acertos INT,
     FOREIGN KEY (idusuario) REFERENCES usuario(id));
+    
     
 SELECT * FROM pontuacaorank;
 

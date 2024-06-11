@@ -59,8 +59,8 @@
   </div>
 
   <div id="loading" style="display: none;">
-    <img src="./assets/img/gif.png" alt="Loading...">
-  </div>
+    <img src="../assets/img/gif.png!sw800" alt="Loading...">
+</div>
 
 </body>
 
@@ -119,11 +119,9 @@
       }),
     })
       .then(function (resposta) {
-        document.getElementById('loading').style.display = 'none';
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
           mensagem_erro.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
@@ -137,8 +135,10 @@
         }
       })
       .catch(function (resposta) {
-        document.getElementById('loading').style.display = 'none';
         console.log(`#ERRO: ${resposta}`);
+      })
+      .finally(function () {
+        document.getElementById('loading').style.display = 'none';
       });
 
     return false;

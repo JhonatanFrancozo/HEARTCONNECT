@@ -160,3 +160,74 @@ h2 {
     color: #67b3a3; 
     text-decoration: underline; 
 }
+
+
+#conteudo1 h2 {
+    margin-top:75%;
+    text-align: center;
+    font-size: 40px;
+    font-family: 'heart fino';
+}
+
+#conteudo1 h3 {
+    margin-top: 5%;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'heart fino';
+    color: #5D7466;
+}
+
+#baix {
+    display: flex;
+}
+
+#baix p {
+    margin-top: 7%;
+    margin-left: 7%;
+    font-size: 25px;
+    font-family: 'heart fino';
+}
+
+#baix img {
+    margin-left: 7%;
+    margin-top: 6%;
+}
+
+#fundotela h2{
+    margin-top: 30%;
+    margin-left: 13%;
+    font-size: 30px;
+    font-family: 'heart fino';
+}
+
+#fundotela h3{
+    margin-top: 5%;
+    margin-left: 19%;
+    font-size: 25px;
+    font-family: 'heart fino';
+    color: #4c5f53;
+}
+
+#fundotela p {
+    margin-top: 4%;
+    margin-left: 19%;
+    font-size: 25px;
+    font-family: 'heart fino';
+    color: #4c5f53;
+}
+
+#fundotela #varios {
+    margin-top: 4%;
+    margin-left: 33%;
+}
+
+#fundotela #onu {
+    margin-top: 4%;
+    margin-left: 39.5%;
+}
+
+#header p {
+    color: white;
+    margin-top: 10%;
+    margin-left: 42%;
+}
